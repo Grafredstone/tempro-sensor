@@ -14,6 +14,5 @@ basic.showLeds(`
 basic.forever(function () {
     radio.sendNumber(DHT11.temperature() * Salt)
     basic.setLedColor(0x00ffff)
-    basic.pause(100)
     basic.setLedColor(0x000000)
 })
