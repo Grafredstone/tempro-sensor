@@ -1,22 +1,17 @@
-radio.onReceivedNumber(function (receivedNumber) {
-    basic.showNumber(receivedNumber / Salt)
+let Funkgruppe = randint(0, 255)
+let Salt = randint(0, 65536) * randint(0, 65536)
+radio.sendValue(convertToText(Funkgruppe), Salt)
+radio.setGroup(Funkgruppe)
+DHT11.setPin(DigitalPin.P0)
+basic.showLeds(`
+    . . # # .
+    . # . . .
+    . . # . .
+    . . . # .
+    . # # . .
+    `)
+basic.forever(function () {
+    radio.sendNumber(DHT11.temperature() * Salt)
+    basic.setLedColor(0x00ffff)
+    basic.setLedColor(0x000000)
 })
-radio.onReceivedValue(function (name, value) {
-    basic.showIcon(IconNames.Yes)
-    basic.showLeds(`
-        . # # . .
-        . # . # .
-        . # . # .
-        . # . # .
-        . # # . .
-        `)
-    radio.setGroup(parseFloat(name))
-    Salt = value
-})
-let Salt = 0
-while (true) {
-    basic.showIcon(IconNames.Diamond)
-    basic.pause(200)
-    basic.showIcon(IconNames.SmallDiamond)
-    basic.pause(200)
-}
