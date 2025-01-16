@@ -1,4 +1,3 @@
-radio.setGroup(216)
 let Funkgruppe = randint(0, 255)
 let Salt = randint(0, 65536) * randint(0, 65536)
 radio.sendValue(convertToText(Funkgruppe), Salt)
