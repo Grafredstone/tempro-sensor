@@ -1,5 +1,5 @@
 input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
-    basic.showString("" + Salt + Funkgruppe)
+    basic.showString("" + Salt + "|" + Funkgruppe)
 })
 let Salt = 0
 let Funkgruppe = 0
