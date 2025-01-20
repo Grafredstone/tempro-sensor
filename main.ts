@@ -1,5 +1,5 @@
 input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
-    basic.showString("" + Salt + "|" + Funkgruppe)
+    basic.showString("" + Salt + "|" + ("" + Funkgruppe))
 })
 let Salt = 0
 let Funkgruppe = 0
@@ -12,9 +12,46 @@ DHT11.setPin(DigitalPin.P0)
 basic.showString("S")
 basic.setLedColor(0xff0000)
 basic.pause(100)
-basic.setLedColor(0x000000)
+basic.setLedColor(basic.rgb(0, 0, 25))
 basic.forever(function () {
     radio.sendNumber(DHT11.temperature() * Salt)
-    basic.setLedColor(0x00ffff)
-    basic.setLedColor(0x000000)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . # # # .
+        . . # . .
+        `)
+    basic.pause(10)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . # # # .
+        # . . . #
+        . . # . .
+        `)
+    basic.pause(10)
+    basic.showLeds(`
+        . . . . .
+        . # # # .
+        # . . . #
+        . . . . .
+        . . # . .
+        `)
+    basic.pause(10)
+    basic.showLeds(`
+        . # # # .
+        # . . . #
+        . . . . .
+        . . . . .
+        . . # . .
+        `)
+    basic.pause(10)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . # . .
+        `)
 })
